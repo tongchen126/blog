@@ -1,0 +1,21 @@
+pandasql demo(sqlite):
+from pandasql import sqldf
+pysqldf = lambda q: sqldf(q, globals())
+print(pysqldf("SELECT COUNT(*) FROM csv_data WHERE `%d-0.0`!='None'" %(i)))
+print(pysqldf("SELECT `20217-2.0` FROM csv_data WHERE `%d-0.0`!='None' AND ((`20217-2.0`!='None' or `20217-3.0`!='None') and (`20225-2.0`!='None' or `20225-3.0`!='None')) AND (`90004-0.0`!='None') AND (`20252-2.0`!='None' or `20252-3.0`!='None')"%(i)))
+print(pysqldf("SELECT `41270-0.0` FROM csv_data WHERE `%d-0.0` LIKE '%s'" %(41270,'I11%')))
+
+pandasql demo(postgresql):
+sqldf("SELECT \"41270-0.0\" FROM csv_data WHERE \"41270-0.0\" SIMILAR TO 'I1(1|2)%%'",db_uri="postgres://postgres:toor@127.0.0.1:5432")
+More on pattern matching:
+https://www.postgresql.org/docs/9.3/functions-matching.html
+
+
+Usage of LIKE in SQL:
+WHERE CustomerName LIKE 'a%' 	Finds any values that start with "a"
+WHERE CustomerName LIKE '%a' 	Finds any values that end with "a"
+WHERE CustomerName LIKE '%or%' 	Finds any values that have "or" in any position
+WHERE CustomerName LIKE '_r%' 	Finds any values that have "r" in the second position
+WHERE CustomerName LIKE 'a_%' 	Finds any values that start with "a" and are at least 2 characters in length
+WHERE CustomerName LIKE 'a__%' 	Finds any values that start with "a" and are at least 3 characters in length
+WHERE ContactName LIKE 'a%o' 	Finds any values that start with "a" and ends with "o"
