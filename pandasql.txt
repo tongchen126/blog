@@ -10,6 +10,8 @@ sqldf("SELECT \"41270-0.0\" FROM csv_data WHERE \"41270-0.0\" SIMILAR TO 'I1(1|2
 More on pattern matching:
 https://www.postgresql.org/docs/9.3/functions-matching.html
 
+mariadb:
+SELECT COUNT(*) FROM csv_data_partial WHERE `41270-0.0` REGEXP 'I0.*';
 
 Usage of LIKE in SQL:
 WHERE CustomerName LIKE 'a%' 	Finds any values that start with "a"
