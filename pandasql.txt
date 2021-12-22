@@ -11,6 +11,7 @@ More on pattern matching:
 https://www.postgresql.org/docs/9.3/functions-matching.html
 
 mariadb:
+https://mariadb.com/kb/en/regular-expressions-overview/
 SELECT COUNT(*) FROM csv_data_partial WHERE `41270-0.0` REGEXP 'I0.*';
 
 Usage of LIKE in SQL:
