@@ -1,0 +1,22 @@
+https://docs.python.org/3/library/multiprocessing.html
+
+Process:
+out=multiprocessing.Queue()
+#lock=threading.Lock()
+threads=[]
+for i in ["0[0-2]","0[5-9]","1[0-5]","2[0-5]","2[6-8]","(3[0-9]|4[0-9]|5[0-2])","6[0-9]","7[0-9]","8[0-9]","9[5-9]"]:
+    t=multiprocessing.Process(target=execute_sql_parallel,args=(i,out,csv_data))
+    threads.append(t)
+    t.start()
+for i in threads:
+    i.join()
+    
+    
+Pool:
+threads=[]
+pool=multiprocessing.Pool(processes=2)
+for i in ["0[0-2]","0[5-9]","1[0-5]","2[0-5]","2[6-8]","(3[0-9]|4[0-9]|5[0-2])","6[0-9]","7[0-9]","8[0-9]","9[5-9]"]:
+    t=pool.apply_async(func=execute_sql_parallel_pool,args=(i,csv_data))
+    threads.append(t)
+for i in threads:
+    print(i.get())
