@@ -1,0 +1,8 @@
+RISC-V:
+https://wiki.debian.org/RISC-V#SiFive_.22Freedom_U540.22_SoC_.28quad-core_RV64GC.29_.2F_.22HiFive_Unleashed.22
+sudo debootstrap --arch=riscv64 --keyring /usr/share/keyrings/debian-ports-archive-keyring.gpg --include=debian-ports-archive-keyring unstable /tmp/riscv64-chroot http://deb.debian.org/debian-ports
+apt install locales
+dpkg-reconfigure locales
+
+Debian sysvinit:
+https://wiki.debian.org/Init
