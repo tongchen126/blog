@@ -6,3 +6,18 @@ dpkg-reconfigure locales
 
 Debian sysvinit:
 https://wiki.debian.org/Init
+
+Change TTY:
+/etc/inittab
+T0:2345:respawn:/sbin/getty -L ttyLXU0 115200 vt100
+
+
+Add network interfaces:
+/etc/network/interfaces
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+source /etc/network/interfaces.d/*
+
