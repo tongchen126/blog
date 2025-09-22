@@ -1,0 +1,14 @@
+[Unit]
+Description=Frp Client Service
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+DynamicUser=yes
+Restart=always
+RestartSec=10s
+ExecStart=/usr/bin/frpc -c /etc/frp/frpc.ini
+ExecReload=/usr/bin/frpc reload -c /etc/frp/frpc.ini
+LimitNOFILE=1048576
+[Install]
+WantedBy=multi-user.target
