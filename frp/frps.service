@@ -1,0 +1,16 @@
+[Unit]
+Description=Frp Server Service
+After=network-online.target
+Wants=network-online.target
+[Service]
+Type=simple
+DynamicUser=yes
+Restart=always
+RestartSec=10s
+ExecStart=/usr/bin/frps -c /etc/frp/frps.ini
+LimitNOFILE=1048576
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+#CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+#Capabilities=CAP_NET_BIND_SERVICE+ep
+[Install]
+WantedBy=multi-user.target
