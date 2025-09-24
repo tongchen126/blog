@@ -1,6 +1,14 @@
-1. How to bind a systemd service to specific cpu(s), helpful in arm bit.little architecture
-Add CPUAffinity under [Service] sections 
-[Service] 
+## Bind a systemd service or process to specific CPU(s)
+
+When working on **ARM big.LITTLE architectures** (or any multi-core CPU), you may want to bind services or processes to specific CPU cores for better performance or isolation.
+
+You can add the `CPUAffinity` directive under the `[Service]` section of your systemd unit file:
+
+```ini
+[Service]
+ExecStart=/path/to/your/app
 CPUAffinity=6 7
 
-To run a process on specific cpu(s), use "taskset -c 6 7 python3 main.py"
+You can also bind a process manually using taskset:
+```bash
+taskset -c 6,7 python3 main.py
