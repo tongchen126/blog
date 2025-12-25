@@ -1,0 +1,10 @@
+1. Disabe Windows APPX (Store) service
+
+Navigate to Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\AppXSvc
+Double click the "Start value" and set it to 4 in Hexadecimal 
+
+輸入本機電腦策略並轉到電腦配置。
+選擇“Administrative Templates”，展開Windows Components，雙擊打開“Store”。
+選擇“關閉應用商店應用程式”並點擊“編輯策略設定”。
+停用 Windows 商店
+將狀態更改為“啟用”。 點擊“應用”和“確定”儲存並退出。
